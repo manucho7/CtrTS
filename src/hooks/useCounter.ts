@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap } from 'gsap'
+import { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
 
 const MAXIMUM_COUNT = 10;
 
-export const CounterEffect = () => {
+export const useCounter = () => {
 
     const [counter, setCounter] = useState(5);
     
@@ -27,16 +27,12 @@ export const CounterEffect = () => {
         timeline.repeat(7)
 
 
-    }, [counter])
+    }, [counter]);
 
-    return (
-        <>
-            <h1>CounterEffect:</h1>
-            <h1 ref={ counterElement } className="mi-objeto"> { counter }</h1>
+    return {
+        counter,
+        handleClick,
+        counterElement
+    };
 
-            <button onClick={ handleClick }>
-                +1
-            </button>
-        </>
-    )
-}
+};
